@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.420</groupId>
 	<artifactId>climaREST</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>climaREST</name>
 	<description>API rest para proyecto UTEM</description>
@@ -26,8 +26,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<dependency>
+                
+            <dependency>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+            </dependency>
+	 <dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
@@ -51,6 +55,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+                <finalName>climarest</finalName>
 	</build>
 
 </project>
