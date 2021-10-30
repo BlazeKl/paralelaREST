@@ -8,10 +8,8 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE USUARIOS (
         ID uuid DEFAULT uuid_generate_v4(),
-        EMAIL char(255) NOT NULL UNIQUE,
-        PASS char(255) NOT NULL,
-        FECHA_CREADO timestamptz NOT NULL NOW (),
-        FECHA_MOD timestamptz NOT NULL NOW (),
+        EMAIL TEXT NOT NULL UNIQUE,
+        PASS TEXT NOT NULL,
     CONSTRAINT PK_USUARIOS PRIMARY KEY (ID)
 );
 

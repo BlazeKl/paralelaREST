@@ -22,7 +22,7 @@ app.get('/', (request, response) => {
     response.json({ info: 'API REST clima' })
   });
   
-app.use('/grupo-alpha/usuarios',usersRouter);
+app.use('/grupo-a/usuarios',usersRouter);
 
 
 app.listen(port, () => {
