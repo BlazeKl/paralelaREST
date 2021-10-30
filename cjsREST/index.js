@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import {dirname,join} from 'path';
 import {fileURLToPath} from 'url';
-import usersRouter from './src/connect.js';
+import usersRouter from './src/user.js';
 
 dotenv.config();
 
@@ -22,7 +22,7 @@ app.get('/', (request, response) => {
     response.json({ info: 'API REST clima' })
   });
   
-app.use('/grupo-FJ/usuarios',usersRouter);
+app.use('/grupo-alpha/usuarios',usersRouter);
 
 
 app.listen(port, () => {
