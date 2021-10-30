@@ -1,14 +1,21 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-const port = 3000
+import express,{json} from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import {dirname,join} from 'path';
+import {fileURLToPath} from 'url';
 
-app.use(bodyParser.json())
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-)
+dotenv.config();
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const app = express();
+const port = process.env.PORT || 3000;
+const corsOptions = {credentials:true, origin: process.env.URL || '*'}
+
+app.use(cors(corsOptions));
+app.use(json());
+app.use(cookieParser());
 
 app.get('/', (request, response) => {
     response.json({ info: 'API REST clima' })
