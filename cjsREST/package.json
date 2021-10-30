@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "cjsREST with Node.js, Express, and PostgreSQL",
   "main": "index.js",
+  "scripts": {
+    "debug": "nodemon index.js",
+    "normal": "node index.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^2.0.14",
     "pg": "^8.7.1"
   }
 }
