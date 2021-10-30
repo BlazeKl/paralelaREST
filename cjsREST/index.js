@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import {dirname,join} from 'path';
 import {fileURLToPath} from 'url';
+import usersRouter from './src/connect.js';
 
 dotenv.config();
 
@@ -19,7 +20,10 @@ app.use(cookieParser());
 
 app.get('/', (request, response) => {
     response.json({ info: 'API REST clima' })
-  })
+  });
+  
+app.use('/grupo-FJ/usuarios',usersRouter);
+
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
