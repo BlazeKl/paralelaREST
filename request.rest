@@ -1,1 +1,26 @@
 GET http://localhost:3000/grupo-a/usuarios
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5N2M2MTIyLTI5YmQtNGI1MS1hY2U5LWZlMjE1NzFmNjEyNiIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM1NjQyMzE3LCJleHAiOjE2MzU2NDIzMzJ9.RBjjYk8oJ4CW1NBvyaRgPF4I7H5d9nilltJvsrMSAfE
+
+###
+POST http://localhost:3000/grupo-a/usuarios
+Content-Type: application/json
+
+{
+    "email": "felipe.perezc@utem.cl",
+    "password": "patata2021"
+}
+
+###
+POST http://localhost:3000/grupo-a/login
+Content-Type: application/json
+
+{
+    "email": "felipe.perezc@utem.cl",
+    "password": "patata2021"
+}
+
+###
+GET http://localhost:3000/grupo-a/refresh
+
+###
+DELETE http://localhost:3000/grupo-a/refresh
