@@ -1,6 +1,6 @@
 import express from 'express';
 import pool from './connect.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import {jwtTokens} from '../tools/ahelper.js'
 
@@ -15,20 +15,21 @@ router.post('/', async (req,res) => {
             const users = await pool.query(
                 'SELECT * FROM USUARIOS WHERE EMAIL = $1',
                 [email]);
+
             if (users.rows.length === 0) return res.status(401).json({error : "Login incorrecto (email)"});
+            
+            const is_valid = await bcrypt.compare(password, users.rows[0].pass);
+            if(!is_valid) return res.status(401).json({error:"Login incorrecto (pass)"});
+
             let tokens = jwtTokens(users.rows[0]);
             res.cookie('rtoken', tokens.rtoken,{httpOnly:true});
             res.json(tokens);
 
-            const is_valid = await bcrypt.compare(password,users.rows[0].pass);
-            if(!is_valid) return res.status(401).json({error:"Login incorrecto (pass)"});
+            
         } else 
         {
-            return res.status(400).json({error:"Login incorrecto (invalid))"});
+            return res.status(401).json({error:"Login incorrecto (invalid))"});
         }
-
-        
-
     } catch (error) {
         res.status(401).json({error:error.message});
     }
