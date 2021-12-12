@@ -8,8 +8,6 @@ import usersRouter from './src/user.js';
 import authRouter from './src/auth.js';
 import { webscrap } from './src/webscrap.js';
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
-
 
 dotenv.config();
 
