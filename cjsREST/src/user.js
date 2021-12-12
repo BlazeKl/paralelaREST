@@ -16,11 +16,18 @@ router.get('/',authenticationToken,async(req, res) => {
 
 router.post('/',async(req,res) => {
     try {
-        const hpass = await bcrypt.hash(req.body.password, 10);
-        const users = await pool.query(
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body.email))
+        {
+            const hpass = await bcrypt.hash(req.body.password, 10);
+            const users = await pool.query(
             'INSERT INTO USUARIOS (EMAIL,PASS) VALUES ($1,$2) RETURNING *',
             [req.body.email, hpass]);
-        res.json({users:users.rows[0]});
+            res.json({users:users.rows[0]});
+        } else
+        {
+            return res.status(400).json({error : error.message});
+        }
+        
     } catch(error){
         res.status(500).json({error : error.message});
     }

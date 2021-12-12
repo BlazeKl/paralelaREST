@@ -6,19 +6,28 @@ import {jwtTokens} from '../tools/ahelper.js'
 
 const router = express.Router();
 
-router.post('/login', async (req,res) => {
+router.post('/', async (req,res) => {
     try {
         const {email,password} = req.body;
-        const users = await pool.query('SELECT * FROM USUARIOS WHERE EMAIL = $1',[email]);
-        if (users.rows.length === 0) return res.status(401).json({error : "Login incorrecto (email)"});
+        //validar email aqui
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+        {
+            const users = await pool.query(
+                'SELECT * FROM USUARIOS WHERE EMAIL = $1',
+                [email]);
+            if (users.rows.length === 0) return res.status(401).json({error : "Login incorrecto (email)"});
+            let tokens = jwtTokens(users.rows[0]);
+            res.cookie('rtoken', tokens.rtoken,{httpOnly:true});
+            res.json(tokens);
 
-        const is_valid = await bcrypt.compare(password,users.rows[0].pass);
-        if(!is_valid) return res.status(401).json({error:"Login incorrecta (pass)"});
-   
+            const is_valid = await bcrypt.compare(password,users.rows[0].pass);
+            if(!is_valid) return res.status(401).json({error:"Login incorrecto (pass)"});
+        } else 
+        {
+            return res.status(400).json({error:"Login incorrecto (invalid))"});
+        }
 
-        let tokens = jwtTokens(users.rows[0]);
-        res.cookie('rtoken', tokens.rtoken,{httpOnly:true});
-        res.json(tokens);
+        
 
     } catch (error) {
         res.status(401).json({error:error.message});

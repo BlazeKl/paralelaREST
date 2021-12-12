@@ -1,16 +1,17 @@
+### Listar usuarios
 GET http://localhost:3000/grupo-a/usuarios
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5N2M2MTIyLTI5YmQtNGI1MS1hY2U5LWZlMjE1NzFmNjEyNiIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM1NjQyMzE3LCJleHAiOjE2MzU2NDIzMzJ9.RBjjYk8oJ4CW1NBvyaRgPF4I7H5d9nilltJvsrMSAfE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5N2M2MTIyLTI5YmQtNGI1MS1hY2U5LWZlMjE1NzFmNjEyNiIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5MzM2NTEwLCJleHAiOjE2MzkzMzY1MjV9.RV4zFnWwiTyDItlVe3sb9VfQ5D7C6SPdPIpPbEJmAjc
 
-###
+### Crear usuario
 POST http://localhost:3000/grupo-a/usuarios
 Content-Type: application/json
 
 {
-    "email": "felipe.perezc@utem.cl",
+    "email": "felipe.perezc@cutem.cl",
     "password": "patata2021"
 }
 
-###
+### Login
 POST http://localhost:3000/grupo-a/login
 Content-Type: application/json
 
@@ -19,8 +20,12 @@ Content-Type: application/json
     "password": "patata2021"
 }
 
-###
-GET http://localhost:3000/grupo-a/refresh
+### Refrescar token
+GET http://localhost:3000/grupo-a/login/refresh
 
-###
-DELETE http://localhost:3000/grupo-a/refresh
+### Eliminar token
+DELETE http://localhost:3000/grupo-a/login/refresh
+
+### Listar estaciones
+GET http://localhost:3000/grupo-a/stations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5N2M2MTIyLTI5YmQtNGI1MS1hY2U5LWZlMjE1NzFmNjEyNiIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5MzQzMjMzLCJleHAiOjE2MzkzNDMyNDh9.udpLZqUJdp5K5OWMCRwij-irkJZHl-9ZM1q5i4OU9EE
