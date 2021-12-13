@@ -4,7 +4,7 @@ import fs from 'fs';
 import pool from './connect.js';
 import { data } from 'cheerio/lib/api/attributes.js';
 
-function webscrap(){
+function webscrap_temp(){
     request('https://climatologia.meteochile.gob.cl/application/diario/boletinClimatologicoDiario/actual', (err, res, body) => {
         if (!err && res.statusCode == 200){
             let pag = cheerio.load(body);
@@ -36,22 +36,8 @@ function webscrap(){
                 console.log(pag(td[0]).text(), min, max, awua);
                 pool.query('INSERT INTO TEMPERATURAS (ESTACION, PRECIPITACION, TEMP_MIN, TEMP_MAX) VALUES ($1,$2,$3,$4)',[estacion,awua,min,max])
             })
-            
-        }
-    })
-    request('https://climatologia.meteochile.gob.cl/application/informacion/buscadorDeEstaciones', (err, res, body) => {
-        if (!err && res.statusCode == 200){
-            let pag = cheerio.load(body);
-            pag("#estaciones_div > div > card_body > table > tbody > tr").each((index,element) => {
-                if ((index == 0) || (index == 1)) return true;
-                const td = pag(element).find("td");
-                let codigo;
-                let nombre = pag(td[5]).text();
-                let latitud = pag(td[6]).text();
-                let longitud = pag(td[7]).text();
-                console.log(nombre, latitud, longitud);
-            })
         }
     })
 }
-export {webscrap};
+
+export {webscrap_temp};

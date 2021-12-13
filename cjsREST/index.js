@@ -7,7 +7,7 @@ import {fileURLToPath} from 'url';
 import usersRouter from './src/user.js';
 import authRouter from './src/auth.js';
 import restRouter from './src/rest.js'
-import { webscrap } from './src/webscrap.js';
+import { webscrap_est } from './src/webscrap.js';
 import { Injectable, Logger } from '@nestjs/common';
 
 dotenv.config();
@@ -18,7 +18,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const corsOptions = {credentials:true, origin: process.env.URL || '*'};
 
-//webscrap();
+//webscrap_temp();
+
 
 app.use(cors(corsOptions));
 app.use(json());
