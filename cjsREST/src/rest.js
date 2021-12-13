@@ -34,10 +34,10 @@ router.get('/stations',authenticationToken,async(req, res) => {
 })
 
 
-//POST buscar informacion de la estacion, desde y hasta cierta fecha
-router.post('/search',authenticationToken,async(req,res) => {
+//POST buscar informacion de la estacion
+router.post('est:cod/stations',authenticationToken,async(req,res) => {
     try {
-        
+        var cod = parseInt(req.params.cod);
     } catch(error){
         res.status(500).json({error : error.message});
     }

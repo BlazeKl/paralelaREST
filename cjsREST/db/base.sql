@@ -24,9 +24,9 @@ CREATE TABLE USUARIOS (
 CREATE TABLE TEMPERATURAS (
         FECHA_CREADO TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
         COD_ESTACION INT NOT NULL,
-        PRECIPITACION TEXT,
-        TEMP_MIN TEXT,
-        TEMP_MAX TEXT,
+        PRECIPITACION FLOAT,
+        TEMP_MIN FLOAT,
+        TEMP_MAX FLOAT,
         CONSTRAINT PK_TEMPERATURAS PRIMARY KEY (FECHA_CREADO),
         CONSTRAINT FK_ESTACIONES FOREIGN KEY (COD_ESTACION) REFERENCES ESTACIONES(COD_ESTACION)
 );
@@ -44,7 +44,8 @@ INSERT INTO ESTACIONES (COD_ESTACION,NOMBRE,LATITUD,LONGITUD,ALTITUD) VALUES
 (290004,' La Florida, La Serena Ad. ',-29.91444,-71.20667,137),
 (320041,' Viña del Mar Ad. (Torquemada) ',-32.94944,-71.47611,141),
 (320051,' Los Libertadores ',-32.84555,-70.11917,2955),
-(330007,' Rodelillo, Ad. ',33.06528,-71.55639,650),
+(330002,' Punta Ángeles faro ',-33.022777,-71.647499,51),
+(330007,' Rodelillo, Ad. ',-33.06528,-71.55639,650),
 (330019,' Eulogio Sánchez, Tobalaba Ad. ',-33.45528,-70.54861,650),
 (330020,' Quinta Normal, Santiago ',-33.44500,-70.68278,520),
 (330021,' Pudahuel Santiago ',-33.37833,-70.78778,482),
@@ -56,10 +57,11 @@ INSERT INTO ESTACIONES (COD_ESTACION,NOMBRE,LATITUD,LONGITUD,ALTITUD) VALUES
 (330112,' San José Guayacán ',-33.61528,-70.35055,928),
 (330113,' El Paico ',-33.70639,-71.00805,275),
 (340031,' General Freire, Curicó Ad. ',-34.96944,-71.21694,229),
-(360011,' General Bernardo O`Higgins, Chillán Ad. ',-36.58583,-72.03667,155),
+(360011,' General Bernardo O''Higgins, Chillán Ad. ',-36.58583,-72.03667,155),
 (360019,' Carriel Sur, Concepción Ap. ',-36.78055,-73.06639,13),
 (360042,' Termas de Chillán ',-36.90361,-71.41000,1708),
 (370033,' María Dolores, Los Angeles Ad. ',-37.39694,-72.42389,118),
+(380013,' Maquehue, Temuco Ad. ',-38.767777,-72.631943,86),
 (380029,' La Araucanía Ad. ',-38.93444,-72.65333,96),
 (390006,' Pichoy, Valdivia Ad. ',-39.65667,-73.08722,18),
 (400009,' Cañal Bajo, Osorno Ad. ',-40.61444,-73.05750,61),
@@ -80,4 +82,4 @@ INSERT INTO ESTACIONES (COD_ESTACION,NOMBRE,LATITUD,LONGITUD,ALTITUD) VALUES
 (550001,' Guardiamarina Zañartu, Pto Williams Ad. ',-54.93167,-67.61556,12),
 (950001,' C.M.A. Eduardo Frei Montalva, Antártica ',-62.19194,-58.97972,45),
 (950002,' Arturo Prat, Base Antártica ',-62.47861,-59.66417,5),
-(950003,' Bernardo O`Higgins, Base Antártica ',-63.32083,-57.89944,10);
+(950003,' Bernardo O''Higgins, Base Antártica ',-63.32083,-57.89944,10);
