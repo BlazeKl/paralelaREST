@@ -5,7 +5,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRmNzRhMzNjL
 ### Crear usuario
 POST http://localhost:3000/grupo-a/usuarios
 Content-Type: application/json
-
 {
     "email": "felipe.perezc@cutem.cl",
     "password": "patata2021"
@@ -14,7 +13,6 @@ Content-Type: application/json
 ### Login
 POST http://localhost:3000/grupo-a/login
 Content-Type: application/json
-
 {
     "email": "felipe.perezc@utem.cl",
     "password": "patata2021"
@@ -28,4 +26,22 @@ DELETE http://localhost:3000/grupo-a/login/refresh
 
 ### Listar estaciones
 GET http://localhost:3000/grupo-a/stations
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ5N2M2MTIyLTI5YmQtNGI1MS1hY2U5LWZlMjE1NzFmNjEyNiIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5MzQzMjMzLCJleHAiOjE2MzkzNDMyNDh9.udpLZqUJdp5K5OWMCRwij-irkJZHl-9ZM1q5i4OU9EE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyYjBmMjA2LWEzODgtNGViOS1iYTE0LWQ3YjM4MDhlMTk4NCIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5NDM0OTY1LCJleHAiOjE2Mzk0MzU4NjV9.TzDkUZ71uP2gOVPT-_UH97NkEEBzNG_Lu30OLAp3d_g
+
+### Listar informacion de a partir de codigo de estacion
+GET http://localhost:3000/grupo-a/200006/stations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyYjBmMjA2LWEzODgtNGViOS1iYTE0LWQ3YjM4MDhlMTk4NCIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5NDMyMTQwLCJleHAiOjE2Mzk0MzMwNDB9.bFNMKdDyjhKBGjgL4WGkr96SsJxhQPj8bkH-kgqYpkM
+
+### Listar indiciadores (temp.max = 1 temp.min = 2 precipitacion = 3) y su valer en un rango de fecha
+POST http://localhost:3000/grupo-a/search
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyYjBmMjA2LWEzODgtNGViOS1iYTE0LWQ3YjM4MDhlMTk4NCIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5NDM5NDc1LCJleHAiOjE2Mzk0NDAzNzV9.cUkqxVrROON_sN_KW_Mu4-uojzg6kL9vkRAmOZLufE0
+Content-Type: application/json
+{
+    "indicador": "1",
+    "desde": "2021-12-13",
+    "hasta": "2021-12-15"
+}
+
+### Listar clima para hoy por ubicacion
+GET http://localhost:3000/grupo-a/3/-20/-70/estimate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyYjBmMjA2LWEzODgtNGViOS1iYTE0LWQ3YjM4MDhlMTk4NCIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5NDQ1MjI1LCJleHAiOjE2Mzk0NDg4MjV9.nURYKFhlkkqerWaZOIQe5i4R9esPCSMqhbhxKN264SU
