@@ -1,0 +1,249 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: clima; Type: SCHEMA; Schema: -; Owner: clima
+--
+
+CREATE SCHEMA clima;
+
+
+ALTER SCHEMA clima OWNER TO clima;
+
+--
+-- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: estaciones; Type: TABLE; Schema: clima; Owner: clima
+--
+
+CREATE TABLE clima.estaciones (
+    cod_estacion integer NOT NULL,
+    nombre text NOT NULL,
+    latitud double precision NOT NULL,
+    longitud double precision NOT NULL,
+    altitud double precision NOT NULL
+);
+
+
+ALTER TABLE clima.estaciones OWNER TO clima;
+
+--
+-- Name: temperaturas; Type: TABLE; Schema: clima; Owner: clima
+--
+
+CREATE TABLE clima.temperaturas (
+    fecha_creado timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    cod_estacion integer NOT NULL,
+    precipitacion double precision,
+    temp_min double precision,
+    temp_max double precision
+);
+
+
+ALTER TABLE clima.temperaturas OWNER TO clima;
+
+--
+-- Name: usuarios; Type: TABLE; Schema: clima; Owner: clima
+--
+
+CREATE TABLE clima.usuarios (
+    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    email text NOT NULL,
+    pass text NOT NULL
+);
+
+
+ALTER TABLE clima.usuarios OWNER TO clima;
+
+--
+-- Data for Name: estaciones; Type: TABLE DATA; Schema: clima; Owner: clima
+--
+
+COPY clima.estaciones (cod_estacion, nombre, latitud, longitud, altitud) FROM stdin;
+180005	 Chacalluta, Arica Ap. 	-18.35555	-70.34028	50
+200006	 Diego Aracena Iquique Ap. 	-20.54917	-70.18111	48
+220002	 El Loa, Calama Ad. 	-22.49806	-68.8925	2321
+230001	 Cerro Moreno Antofagasta Ap. 	-23.45361	-70.44528	112
+270001	 Mataveri Isla de Pascua Ap. 	-27.15889	-109.4325	44
+270008	 Desierto de Atacama, Caldera Ad. 	-27.25444	-70.78111	197
+290004	 La Florida, La Serena Ad. 	-29.91444	-71.20667	137
+320041	 Viña del Mar Ad. (Torquemada) 	-32.94944	-71.47611	141
+320051	 Los Libertadores 	-32.84555	-70.11917	2955
+330002	 Punta Ángeles faro 	-33.022777	-71.647499	51
+330007	 Rodelillo, Ad. 	-33.06528	-71.55639	650
+330019	 Eulogio Sánchez, Tobalaba Ad. 	-33.45528	-70.54861	650
+330020	 Quinta Normal, Santiago 	-33.445	-70.68278	520
+330021	 Pudahuel Santiago 	-33.37833	-70.78778	482
+330030	 Santo Domingo, Ad. 	-33.65611	-71.61333	77
+330031	 Juan Fernández, Estación Meteorológica. 	-33.63583	-78.83305	40
+330066	 La Punta, Juan Fernández Ad. 	-33.66639	-78.93167	126
+330077	 El Colorado 	-33.35	-70.29361	2750
+330111	 Lo Prado Cerro San Francisco 	-33.45806	-70.94861	1068
+330112	 San José Guayacán 	-33.61528	-70.35055	928
+330113	 El Paico 	-33.70639	-71.00805	275
+340031	 General Freire, Curicó Ad. 	-34.96944	-71.21694	229
+360011	 General Bernardo O'Higgins, Chillán Ad. 	-36.58583	-72.03667	155
+360019	 Carriel Sur, Concepción Ap. 	-36.78055	-73.06639	13
+360042	 Termas de Chillán 	-36.90361	-71.41	1708
+370033	 María Dolores, Los Angeles Ad. 	-37.39694	-72.42389	118
+380013	 Maquehue, Temuco Ad. 	-38.767777	-72.631943	86
+380029	 La Araucanía Ad. 	-38.93444	-72.65333	96
+390006	 Pichoy, Valdivia Ad. 	-39.65667	-73.08722	18
+400009	 Cañal Bajo, Osorno Ad. 	-40.61444	-73.0575	61
+410005	 El Tepual Puerto Montt Ap. 	-41.4475	-73.09583	87
+420004	 Chaitén, Ad. 	-42.93028	-72.70083	10
+420014	 Mocopulli Ad. 	-42.34667	-73.715	174
+430002	 Futaleufú Ad. 	-43.18889	-71.85222	347
+430004	 Alto Palena Ad. 	-43.61167	-71.80139	256
+430009	 Melinka Ad. 	-43.89778	-73.73944	8
+450001	 Puerto Aysén Ad. 	-45.39944	-72.67722	11
+450004	 Teniente Vidal, Coyhaique Ad. 	-45.59083	-72.10222	69
+450005	 Balmaceda Ad. 	-45.91833	-71.67778	517
+460001	 Chile Chico Ad. 	-46.585	-71.68528	311
+470001	 Lord Cochrane Ad. 	-47.24389	-72.5825	209
+510005	 Teniente Gallardo, Puerto Natales Ad. 	-51.66722	-72.52889	69
+520006	 Carlos Ibañez, Punta Arenas Ap. 	-53.00167	-70.83861	36
+530005	 Fuentes Martínez, Porvenir Ad. 	-53.25361	-70.32611	25
+550001	 Guardiamarina Zañartu, Pto Williams Ad. 	-54.93167	-67.61556	12
+950001	 C.M.A. Eduardo Frei Montalva, Antártica 	-62.19194	-58.97972	45
+950002	 Arturo Prat, Base Antártica 	-62.47861	-59.66417	5
+950003	 Bernardo O'Higgins, Base Antártica 	-63.32083	-57.89944	10
+\.
+
+
+--
+-- Data for Name: temperaturas; Type: TABLE DATA; Schema: clima; Owner: clima
+--
+
+COPY clima.temperaturas (fecha_creado, cod_estacion, precipitacion, temp_min, temp_max) FROM stdin;
+2021-12-13 11:15:18.088426-03	180005	0	18.2	22.2
+2021-12-13 11:15:18.090269-03	200006	0	17.1	22.3
+2021-12-13 11:15:18.091408-03	220002	0	5.7	22.7
+2021-12-13 11:15:18.092207-03	230001	0	15.3	19.7
+2021-12-13 11:15:18.093328-03	270008	0	13.7	22
+2021-12-13 11:15:18.094446-03	290004	0	12.2	20.8
+2021-12-13 11:15:18.096406-03	330002	0	12	19.8
+2021-12-13 11:15:18.096808-03	330007	0	8.8	21.6
+2021-12-13 11:15:18.097912-03	330019	0	10	23.8
+2021-12-13 11:15:18.098693-03	330021	0	11	24.3
+2021-12-13 11:15:18.101771-03	330031	1.4	11.9	16.9
+2021-12-13 11:15:18.102255-03	340031	0	9.6	22.7
+2021-12-13 11:15:18.102695-03	360011	0	6.1	21.7
+2021-12-13 11:15:18.103385-03	360019	0	7.9	18.1
+2021-12-13 11:15:18.10367-03	380013	0.5	2.9	18.4
+2021-12-13 11:15:18.10821-03	390006	0	5.9	16.8
+2021-12-13 11:15:18.108481-03	400009	0.8	9.5	16.8
+2021-12-13 11:15:18.108715-03	450004	0	8.6	16.4
+2021-12-13 11:15:18.109101-03	450005	0	5.8	16.1
+2021-12-13 11:15:18.109293-03	410005	3.2	9.1	14.7
+2021-12-13 11:15:18.116783-03	330020	0	8.8	24.6
+2021-12-13 11:15:18.117008-03	520006	0	5.5	12.4
+2021-12-13 18:17:53.006229-03	180005	0	18.2	22.2
+2021-12-13 18:17:53.007241-03	330019	0	10	23.8
+2021-12-13 18:17:53.007888-03	290004	0	12.2	20.8
+2021-12-13 18:17:53.008786-03	330007	0	8.8	21.6
+2021-12-13 18:17:53.01054-03	200006	0	17.1	22.3
+2021-12-13 18:17:53.011507-03	270008	0	13.7	22
+2021-12-13 18:17:53.012412-03	220002	0	5.7	22.7
+2021-12-13 18:17:53.013352-03	330020	0	8.8	24.6
+2021-12-13 18:17:53.014323-03	330002	0	12	19.8
+2021-12-13 18:17:53.015392-03	230001	0	15.3	19.7
+2021-12-13 18:17:53.015784-03	330021	0	11	24.3
+2021-12-13 18:17:53.016386-03	330031	1.4	11.9	16.9
+2021-12-13 18:17:53.016812-03	340031	0	9.6	22.7
+2021-12-13 18:17:53.017427-03	360011	0	6.1	21.7
+2021-12-13 18:17:53.017891-03	360019	0	7.9	18.1
+2021-12-13 18:17:53.018029-03	380013	0.5	2.9	18.4
+2021-12-13 18:17:53.018875-03	390006	0	5.9	16.8
+2021-12-13 18:17:53.019043-03	400009	0.8	9.5	16.8
+2021-12-13 18:17:53.019632-03	410005	3.2	9.1	14.7
+2021-12-13 18:17:53.020056-03	450004	0	8.6	16.4
+2021-12-13 18:17:53.021475-03	450005	0	5.8	16.1
+2021-12-13 18:17:53.021914-03	520006	0	5.5	12.4
+\.
+
+
+--
+-- Data for Name: usuarios; Type: TABLE DATA; Schema: clima; Owner: clima
+--
+
+COPY clima.usuarios (id, email, pass) FROM stdin;
+22b0f206-a388-4eb9-ba14-d7b3808e1984	felipe.perezc@utem.cl	$2b$10$yzcBQ6byb8jpVc.DGSCJKOmz8EtN/HuhLTVk.g5VIVI1d2ZLyYRm.
+\.
+
+
+--
+-- Name: estaciones pk_estaciones; Type: CONSTRAINT; Schema: clima; Owner: clima
+--
+
+ALTER TABLE ONLY clima.estaciones
+    ADD CONSTRAINT pk_estaciones PRIMARY KEY (cod_estacion);
+
+
+--
+-- Name: temperaturas pk_temperaturas; Type: CONSTRAINT; Schema: clima; Owner: clima
+--
+
+ALTER TABLE ONLY clima.temperaturas
+    ADD CONSTRAINT pk_temperaturas PRIMARY KEY (fecha_creado);
+
+
+--
+-- Name: usuarios pk_usuarios; Type: CONSTRAINT; Schema: clima; Owner: clima
+--
+
+ALTER TABLE ONLY clima.usuarios
+    ADD CONSTRAINT pk_usuarios PRIMARY KEY (id);
+
+
+--
+-- Name: usuarios usuarios_email_key; Type: CONSTRAINT; Schema: clima; Owner: clima
+--
+
+ALTER TABLE ONLY clima.usuarios
+    ADD CONSTRAINT usuarios_email_key UNIQUE (email);
+
+
+--
+-- Name: temperaturas fk_estaciones; Type: FK CONSTRAINT; Schema: clima; Owner: clima
+--
+
+ALTER TABLE ONLY clima.temperaturas
+    ADD CONSTRAINT fk_estaciones FOREIGN KEY (cod_estacion) REFERENCES clima.estaciones(cod_estacion);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
