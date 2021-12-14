@@ -5,6 +5,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRmNzRhMzNjL
 ### Crear usuario
 POST http://localhost:3000/grupo-a/usuarios
 Content-Type: application/json
+
 {
     "email": "felipe.perezc@cutem.cl",
     "password": "patata2021"
@@ -13,6 +14,7 @@ Content-Type: application/json
 ### Login
 POST http://localhost:3000/grupo-a/login
 Content-Type: application/json
+
 {
     "email": "felipe.perezc@utem.cl",
     "password": "patata2021"
@@ -34,8 +36,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyYjBmMjA2L
 
 ### Listar indiciadores (temp.max = 1 temp.min = 2 precipitacion = 3) y su valer en un rango de fecha
 POST http://localhost:3000/grupo-a/search
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyYjBmMjA2LWEzODgtNGViOS1iYTE0LWQ3YjM4MDhlMTk4NCIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5NDM5NDc1LCJleHAiOjE2Mzk0NDAzNzV9.cUkqxVrROON_sN_KW_Mu4-uojzg6kL9vkRAmOZLufE0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIyYjBmMjA2LWEzODgtNGViOS1iYTE0LWQ3YjM4MDhlMTk4NCIsImVtYWlsIjoiZmVsaXBlLnBlcmV6Y0B1dGVtLmNsIiwiaWF0IjoxNjM5NDU1NTc0LCJleHAiOjE2Mzk0NTkxNzR9.hSsUQHMGDJ-dImXMyephbm09jj7zD1wRSagqCO9JG4c
 Content-Type: application/json
+
 {
     "indicador": "1",
     "desde": "2021-12-13",
