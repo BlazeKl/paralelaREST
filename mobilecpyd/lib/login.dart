@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'lcontroller.dart';
+import 'menu.dart';
 
 class LoginPage extends StatelessWidget {
   final controller = Get.put(Controller());
@@ -8,13 +9,16 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      //appBar: AppBar(title: Text('Login')),
       body: Center(
         child: Obx(() {
           if (controller.account.value == null)
             return BuildLoginButton();
-          else
-            return BuildMenu();
+          else {
+            String account = controller.account.value?.email ?? '';
+            String code = controller.account.value?.hashCode.toString() ?? '';
+            return GeneralMenu(correo: account, hashcode: code);
+          }
         }), //child
       ), //body
     ); //Scaffold
@@ -36,14 +40,14 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Column BuildMenu() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(controller.account.value?.email ?? ''),
-        Text(controller.account.value?.hashCode.toString() ?? ''),
-      ],
-      // text: 'CPYD APP GRUPO A',
-    );
-  }
+  // Column BuildMenu() {
+  //   return Column(
+  //     mainAxisSize: MainAxisSize.min,
+  //     children: [
+  //       Text(controller.account.value?.email ?? ''),
+  //       Text(controller.account.value?.hashCode.toString() ?? ''),
+  //     ],
+  //     // text: 'CPYD APP GRUPO A',
+  //   );
+  // }
 }
