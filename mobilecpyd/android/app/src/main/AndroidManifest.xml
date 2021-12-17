@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grupa_a.mobilecpyd">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="mobilecpyd"
         android:name="${applicationName}"
@@ -30,5 +31,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCZQxxBu_Zhfwchg_VLFDd0Ebl4lUZ4ju8"/>
     </application>
 </manifest>

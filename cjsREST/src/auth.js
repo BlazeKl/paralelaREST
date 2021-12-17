@@ -24,6 +24,7 @@ router.post('/', async (req,res) => {
             let tokens = jwtTokens(users.rows[0]);
             res.cookie('rtoken', tokens.rtoken,{httpOnly:true});
             res.json(tokens);
+            console.log('Login correcto para:',email)
 
             
         } else 

@@ -7,7 +7,7 @@ void main() {
   runApp(HomePage());
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget { // Main de dart, deriva al resto de la aplicacion
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: LoginPage(),
+      home: LoginPage(), // Inicia funcion de login
     );
   }
 }

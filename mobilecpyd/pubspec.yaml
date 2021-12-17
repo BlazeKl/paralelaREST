@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_sign_in: ^5.2.1
   get: ^4.6.1
+  http: ^0.13.4
+  fluttertoast: ^8.0.8
+  google_maps_flutter: ^2.1.1
+  geocoding: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -52,11 +56,15 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
-# Aca para añadir las imagenes
+
+# Aca para anhadir las imagenes
+
 flutter: 
   assets: 
    - assets/images/logogoogle.png
    - assets/images/logoutem.png
+   - assets/profile/lalo.png
+   - assets/profile/pipeta.png
     
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
